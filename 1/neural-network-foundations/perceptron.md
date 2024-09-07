@@ -9,8 +9,8 @@ The idea was to use different <u>weights</u> to represent the importance of each
 <p align="center">
   <img src="./_attachments/perceptron.jpg" alt="perceptron" />
 </p>
->`x(n)` = Input
->`w(n)` = Weights
+`x(n)` = Input
+`w(n)` = Weights
 
 ---
 
@@ -55,7 +55,7 @@ x5 × w5 = 1 × 1.0 = 1
 1 + 0.9 + 0.7 + 0 + 1 = 3.6
 ```
 
-The result of this is called the <p>Weighted Sum</p>
+_The result is called the <u>Weighted Sum</u>_
 
 **4. Activate the output**
 
@@ -77,7 +77,7 @@ def activation_function(
     return weighted_sum > threshold
 ```
 
-**The result would be true since our weighted_sum is bigger than the set threshold**
+_The result would be <u>True</u> since our `weighted_sum` is bigger than the set `threshold`_
 
 ---
 
