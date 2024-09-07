@@ -6,11 +6,14 @@ However, if an input was only represented by `1`s and `0`s, it would be difficul
 
 The idea was to use different <ins>weights</ins> to represent the importance of each input. The sum of these weighted values should be greater than a set <ins>threshold</ins> value before making a decision (output).
 
+_Note: we could also call perceptrons neurons_
+
 <p align="center">
   <img src="./_attachments/perceptron.jpg" alt="perceptron" />
 </p>
 
 `x(n)` = Input
+<br/>
 `w(n)` = Weights
 
 ---
@@ -81,6 +84,14 @@ def activation_function(
 _The result would be <ins>True</ins> since our `weighted_sum` is bigger than the set `threshold`_
 
 ---
+
+## More Information
+
+**Notice how the threshold was 1.5?**
+
+Usually in modern neural networks, outputs from perceptrons will be normalized between a value of `[0,1]` or `[-1,1]`.
+
+We’ll dive deeper into these concepts in later topics, where we explore more complex architectures such as Convolutional Neural Networks (CNNs) for image processing, Natural Language Processing (NLP) models, and advanced techniques like transformers. These models involve handling multiple layers of perceptrons, working with larger datasets, and applying normalization to effectively process complex data like images, text, and sequences.
 
 # Further Topics
 
