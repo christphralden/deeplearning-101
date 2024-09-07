@@ -33,9 +33,9 @@ manage.py dataset [-h] [--show] [--with-image] [--alphanumeric]
 
 _Options:_
 
--h, --help show this help message and exit
---show Show dataset statistics
---with-image Display images from the dataset
---alphanumeric Adds the alphanumeric dataset
+- `-h, --help`: show this help message and exit
+- `--show`: Show dataset statistics
+- `--with-image`: Display images from the dataset
+- `--alphanumeric`: Adds the alphanumeric dataset
 
 ---
