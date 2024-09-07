@@ -1,4 +1,4 @@
-# That Time I Created A Neural Network From Scratch (NNFS)
+# That Time I Created A Neural Network From Scratch (TTICANNFS)
 
 ```bash
 # Unix
@@ -28,7 +28,7 @@ Only to load the dataset, does nothing else. Probably if you want to view the da
 _Usage_
 
 ```bash
-manage.py dataset [-h] [--show] [--with-image]
+manage.py dataset [-h] [--show] [--with-image] [--alphanumeric]
 ```
 
 _Options:_
@@ -36,5 +36,6 @@ _Options:_
 -h, --help show this help message and exit
 --show Show dataset statistics
 --with-image Display images from the dataset
+--alphanumeric Adds the alphanumeric dataset
 
 ---

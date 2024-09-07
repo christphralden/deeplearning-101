@@ -1,3 +1,9 @@
+"""
+Theres absolutely no reason to look here
+
+Data preprocessing
+"""
+
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -8,7 +14,7 @@ DATA_FOLDER = "data/handwritten-english-characters-and-digits/combined_folder/tr
 class_to_data_map = {
     "NUMERIC": list('0123456789'),
     "ALPHANUMERIC": None
-}
+} # Computational Resource Issue
 
 def load_images_from_folder(folder: str, img_size=(50, 50), select_class: str = 'NUMERIC'):
     images = []
@@ -17,6 +23,8 @@ def load_images_from_folder(folder: str, img_size=(50, 50), select_class: str = 
     if select_class not in class_to_data_map:
         raise ValueError(f"Invalid data class '{select_class}'. Valid options are: {list(class_to_data_map.keys())}")
 
+
+    # listdir is not sorted so use a map to get the folder needed
     class_directories = os.listdir(folder)
 
     if select_class == "NUMERIC":
