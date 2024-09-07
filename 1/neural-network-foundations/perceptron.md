@@ -14,46 +14,50 @@ The idea was to use different <u>weights</u> to represent the importance of each
 
 ---
 
-### Example:
+## Example:
 
 Let’s simulate how a perceptron processes inputs to make a decision.
 
 # Should You Learn Rust?
 
-| Criteria                                                                     | Input (1 or 0) | Weight (TryHard Scale) |
-| ---------------------------------------------------------------------------- | -------------- | ---------------------- |
-| "You love fighting the borrow checker?"                                      | 1              | 1.0                    |
-| "You want to write code that's faster than your caffeine intake?"            | 1              | 0.9                    |
-| "You enjoy syscalls at 3 AM?"                                                | 1              | 0.7                    |
-| "Do you dream about the stack and heap?"                                     | 0              | 0.6                    |
-| "Error: The method exists but the following trait bounds were not satisfied" | 1              | 1.0                    |
+| Criteria                                                                     | Input (1 or 0) | Weight |
+| ---------------------------------------------------------------------------- | -------------- | ------ |
+| "You love fighting the borrow checker?"                                      | 1              | 1.0    |
+| "You want to write code that's faster than your caffeine intake?"            | 1              | 0.9    |
+| "You enjoy syscalls at 3 AM?"                                                | 1              | 0.7    |
+| "You dream about the stack and heap?"                                        | 0              | 0.6    |
+| "Error: The method exists but the following trait bounds were not satisfied" | 1              | 1.0    |
 
-**Based on Frank Rosenblatt**
+### Based on Frank Rosenblatt
 
 1. Set a threshold value
 2. Multiply all inputs with its weights
 3. Sum all the results
 4. Activate the outputs
 
-##### Set a threshold value
+**1. Set a threshold value**
 
-`Threshold Value` = `1.5`
+`Threshold` = `1.5`
 
-##### Multiply all inputs with its weights
+**2. Multiply all inputs with its weights**
 
-- `x1` × `w1` = `1` × `1.0` = `1`
-- `x2` × `w2` = `1` × `0.9` = `0.9`
-- `x3` × `w3` = `1` × `0.7` = `0.7`
-- `x4` × `w4` = `0` × `0.6` = `0`
-- `x5` × `w5` = `1` × `1.0` = `1`
+```plaintext
+x1 × w1 = 1 × 1.0 = 1
+x2 × w2 = 1 × 0.9 = 0.9
+x3 × w3 = 1 × 0.7 = 0.7
+x4 × w4 = 0 × 0.6 = 0
+x5 × w5 = 1 × 1.0 = 1
+```
 
-##### Sum all the results
+**3. Sum all the results**
 
-- `1` + `0.9` + `0.7` + `0` + `1` = `3.6`
+```plaintext
+1 + 0.9 + 0.7 + 0 + 1 = 3.6
+```
 
 The result of this is called the <p>Weighted Sum</p>
 
-##### Activate the output
+**4. Activate the output**
 
 ```python
 def activation_function(
@@ -72,3 +76,13 @@ def activation_function(
     """
     return weighted_sum > threshold
 ```
+
+**The result would be true since our weighted_sum is bigger than the set threshold**
+
+---
+
+# Further Topics
+
+- MLP
+- Activation Functions
+- Perceptron Learning Algorithms
