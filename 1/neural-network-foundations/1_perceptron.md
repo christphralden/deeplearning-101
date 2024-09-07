@@ -18,11 +18,12 @@ _Note: we could also call perceptrons neurons_
   <img src="./_attachments/perceptron.jpg" alt="perceptron" />
 </p>
 
-###### _Visualization of a perceptron_
+<div align="center">
+  <em>Visualization of a perceptron</em>
+</div>
 
-`x(n)` = Input
-<br/>
-`w(n)` = Weights
+- `x(n)` = Input
+- `w(n)` = Weights
 
 ### 1.2 How a perceptron works
 
@@ -30,19 +31,21 @@ _Note: we could also call perceptrons neurons_
   <img src="./_attachments/perceptron-architecture.png" alt="perceptron architecture" />
 </p>
 
-###### _Perceptron architecture_
+<div align="center">
+  <em>Perceptron architecture</em>
+</div>
 
 The diagram above represents a <ins>Perceptron Architecture</ins>
 
-`constant`: Represents the bias term added to ensure the model can make accurate predictions, even when inputs are zero.
-`inputs`: The data values fed into the perceptron for processing.
-`weight`: The weights are coefficients that are dynamically adjusted during training by a learning algorithm (e.g., gradient descent). They are updated based on the error between the predicted output and the actual result, with the goal of minimizing this error over time.
-`weighted sum`: The sum of all inputs multiplied by their corresponding weights, representing the net input to the perceptron.
-`step function`: Often referred to as an Activation Function, this function determines whether the perceptron should fire or remain inactive by producing a binary output based on the weighted sum.
+- `constant`: Represents the bias term added to ensure the model can make accurate predictions, even when inputs are zero.
+- `inputs`: The data values fed into the perceptron for processing.
+- `weight`: The weights are coefficients that are dynamically adjusted during training by a learning algorithm (e.g., gradient descent). They are updated based on the error between the predicted output and the actual result, with the goal of minimizing this error over time.
+- `weighted sum`: The sum of all inputs multiplied by their corresponding weights, representing the net input to the perceptron.
+- `step function`: Often referred to as an Activation Function, this function determines whether the perceptron should fire or remain inactive by producing a binary output based on the weighted sum.
 
 ---
 
-## 2 Example:
+## 2. Example:
 
 Let’s simulate how a perceptron processes inputs to make a decision.
 

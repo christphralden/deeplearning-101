@@ -7,6 +7,14 @@ Each neuron applies an activation function to its weighted sum of inputs to dete
 
 ## 1. What is an Activation Function?
 
+<p align="center">
+  <img src="./_attachments/activation-functions.png" alt="activation-functions" />
+</p>
+
+<div align="center">
+  <em>Perceptron architecture</em>
+</div>
+
 ### 1.1 Definition
 
 Basicly, an activation function decides wheter a neuron should be activated or not. It is a mathematical function applied to a neuron's weighted input.
