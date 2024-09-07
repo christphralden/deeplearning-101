@@ -17,9 +17,11 @@ chmod +x ./kaggle.sh
 
 # Commands
 
-### To run you can use CLI commands
+To run you can use CLI commands
 
-**dataset**
+---
+
+### dataset
 
 Only to load the dataset, does nothing else. Probably if you want to view the dataset.
 
@@ -34,3 +36,5 @@ _Options:_
 -h, --help show this help message and exit
 --show Show dataset statistics
 --with-image Display images from the dataset
+
+---
