@@ -1,31 +1,22 @@
-# Activation Functions
+# Activation Functions in Neural Networks
 
-In neural networks, <ins>Activation Functions</ins> play a crucial role by introducing non-linearity, allowing the network to learn complex patterns.
-Each neuron applies an activation function to its weighted sum of inputs to determine the final output.
+In neural networks, <ins>Activation Functions</ins> play a crucial role by introducing non-linearity, allowing the network to learn complex patterns. Each neuron applies an activation function to its weighted sum of inputs to determine the final output.
+
+<p align="center">
+  <img src="./_attachments/activation-functions.png" alt="Activation Functions" />
+</p>
 
 ---
 
 ## 1. What is an Activation Function?
 
-<p align="center">
-  <img src="./_attachments/activation-functions.png" alt="activation-functions" />
-</p>
+An activation function is a mathematical function applied to a neuron's weighted input. It decides whether a neuron should be activated or not, essentially controlling whether the information should pass to the next layer.
 
-<div align="center">
-  <em>Activation functions</em>
-</div>
-
-### 1.1 Definition
-
-Basicly, an activation function decides wheter a neuron should be activated or not. It is a mathematical function applied to a neuron's weighted input.
-
-This controls wheter the information shuold pass the next layer
-
-### 1.2 Key Roles of Activation Functions:
+### Key Roles of Activation Functions:
 
 - Introduce <ins>non-linearity</ins> into the network
 - Help the network learn complex patterns
-- Aid in <ins>backpropagation</ins> and gradient computation
+- Aid in <ins>Backpropagation</ins> and gradient computation
 
 ---
 
@@ -64,12 +55,26 @@ This controls wheter the information shuold pass the next layer
 - **Pros**: Reduces the dying ReLU issue.
 - **Cons**: Adds a small computation overhead.
 
-### 2.6 Softmax Function
+### 2.6 Softplus Function
 
-- **Range**: Outputs a probability distribution across multiple classes (between 0 and 1).
-- **Usage**: Typically used in the output layer for multi-class classification.
-- **Pros**: Outputs probabilities, good for interpreting predictions in classification tasks.
+- **Range**: Output values between 0 and ∞.
+- **Usage**: A smooth version of ReLU that outputs positive values.
+- **Pros**: Avoids dead neurons and has smooth gradients.
 - **Cons**: Computationally more expensive than ReLU.
+
+### 2.7 Softmax Function
+
+- **Range**: Outputs a probability distribution across multiple classes (values between 0 and 1).
+- **Usage**: Typically used in the output layer for multi-class classification tasks.
+- **Pros**: Produces a probability distribution, allowing for multi-class classification.
+- **Cons**: Computationally more expensive than ReLU, and can sometimes produce high confidence predictions for incorrect classes.
+
+### 2.8 ELU (Exponential Linear Unit)
+
+- **Range**: Output values between `(-α, ∞)` (where α is a hyperparameter typically set to 1).
+- **Usage**: Used in hidden layers of neural networks as an alternative to ReLU.
+- **Pros**: ELU smooths out the output and allows negative values, reducing bias shifts in neurons. It also avoids the "dying ReLU" problem by having a smooth gradient for negative inputs.
+- **Cons**: More computationally expensive than ReLU.
 
 ---
 
@@ -82,7 +87,9 @@ This controls wheter the information shuold pass the next layer
 | Tanh                | `(-1, 1)` | Hidden layers              | Zero-centered, better for training   | Vanishing gradients       |
 | ReLU                | `[0, ∞)`  | Hidden layers              | Fast, avoids vanishing gradients     | Dying ReLU issue          |
 | Leaky ReLU          | `(-∞, ∞)` | Hidden layers              | Prevents dead neurons                | Slight computational cost |
+| Softplus            | `(0, ∞)`  | Hidden layers              | Smooth and avoids dead neurons       | Computationally expensive |
 | Softmax             | `(0, 1)`  | Multi-class Classification | Produces probabilities               | Computationally expensive |
+| ELU                 | `(-α, ∞)` | Hidden layers              | Smooth gradient, avoids dead neurons | Slight computational cost |
 
 ---
 
@@ -93,7 +100,7 @@ Choosing the right activation function depends on the task and layer in the neur
 - **Regression tasks**: Linear or ReLU in the output layer.
 - **Binary classification**: Sigmoid in the output layer.
 - **Multi-class classification**: Softmax in the output layer.
-- **Hidden layers in deep networks**: ReLU or its variants (Leaky ReLU, PReLU).
+- **Hidden layers in deep networks**: ReLU or its variants (Leaky ReLU, Softplus, ELU).
 
 ---
 
@@ -102,13 +109,13 @@ Choosing the right activation function depends on the task and layer in the neur
 ### 5.1 Activation Functions and Vanishing Gradients
 
 - **Problem**: Certain activation functions (like Sigmoid and Tanh) cause gradients to become very small during backpropagation, slowing down learning.
-- **Solution**: Functions like ReLU and its variants are popular because they help mitigate this issue.
+- **Solution**: Functions like ReLU, Leaky ReLU, and ELU help mitigate this issue by allowing larger gradients, especially in deeper networks.
 
 ### 5.2 Activation Functions in Modern Architectures
 
 - **Convolutional Neural Networks (CNNs)**: ReLU is the most commonly used activation function in CNNs.
 - **Recurrent Neural Networks (RNNs)**: Often use Tanh or Sigmoid functions, but newer architectures like LSTMs mitigate vanishing gradients better.
-- **Transformers**: In modern architectures like Transformers, ReLU is used alongside attention mechanisms to focus on important parts of the input data.
+- **Transformers**: In modern architectures like Transformers, ReLU or GELU is used alongside attention mechanisms to focus on important parts of the input data.
 
 ---
 
