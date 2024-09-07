@@ -4,11 +4,12 @@ Originally, the perceptron was designed to take a number of binary inputs and pr
 
 However, if an input was only represented by `1`s and `0`s, it would be difficult to determine which input is more important than the others.
 
-The idea was to use different <u>weights</u> to represent the importance of each input. The sum of these weighted values should be greater than a set <u>threshold</u> value before making a decision (output).
+The idea was to use different <ins>weights</ins> to represent the importance of each input. The sum of these weighted values should be greater than a set <ins>threshold</ins> value before making a decision (output).
 
 <p align="center">
   <img src="./_attachments/perceptron.jpg" alt="perceptron" />
 </p>
+
 `x(n)` = Input
 `w(n)` = Weights
 
@@ -55,7 +56,7 @@ x5 × w5 = 1 × 1.0 = 1
 1 + 0.9 + 0.7 + 0 + 1 = 3.6
 ```
 
-_The result is called the <u>Weighted Sum</u>_
+_The result is called the <ins>Weighted Sum</ins>_
 
 **4. Activate the output**
 
@@ -77,7 +78,7 @@ def activation_function(
     return weighted_sum > threshold
 ```
 
-_The result would be <u>True</u> since our `weighted_sum` is bigger than the set `threshold`_
+_The result would be <ins>True</ins> since our `weighted_sum` is bigger than the set `threshold`_
 
 ---
 
