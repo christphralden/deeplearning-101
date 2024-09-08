@@ -1,15 +1,20 @@
 This dataset is for ABC Multistate bank with following columns:
 
-customer_id, unused variable.
-credit_score, used as input.
-country, used as input.
-gender, used as input.
-age, used as input.
-tenure, used as input.
-balance, used as input.
-products_number, used as input.
-credit_card, used as input.
-active_member, used as input.
-estimated_salary, used as input.
-churn, used as the target. 1 if the client has left the bank during some period or 0 if he/she has not.
+churn:
+phenomenon where customers terminate their relationship with a business or organization.
+
+
+customer_id:        account number (unused)    
+credit_score:       Credit Score
+country:            string (unused)
+gender:             string (unused)
+age:                Age of account holder
+tenure:             From how many years he/she is having bank acc in ABC Bank
+balance:            Account Balance
+products_number:    Number of Product from bank
+credit_card:        Does this customer have credit card
+active_member:      Is an active member of bank
+estimated_salary:   Salary of account holder
+churn:              Churn Status: used as the target. 1 if the client has left the bank during some period or 0 if he/she has not.
 Aim is to Predict the Customer Churn for ABC Bank.
+

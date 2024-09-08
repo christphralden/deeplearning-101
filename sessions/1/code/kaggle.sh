@@ -2,7 +2,7 @@
 
 set -e
 
-echo "Downloading dataset handwritten-english-characters-and-digits from Kaggle"
+echo "Downloading dataset bank-customer-churn-dataset from Kaggle"
 
 mkdir data
 

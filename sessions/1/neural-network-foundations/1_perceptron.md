@@ -112,7 +112,7 @@ _The result would be <ins>True</ins> since our `weighted_sum` is bigger than the
 
 ---
 
-## 3.More Information
+## 3. More Information
 
 **Notice how the threshold was 1.5?**
 
@@ -120,7 +120,11 @@ Usually in modern neural networks, outputs from perceptrons will be normalized b
 
 We’ll dive deeper into these concepts in later topics, where we explore more complex architectures such as Convolutional Neural Networks (CNNs) for image processing, Natural Language Processing (NLP) models, and advanced techniques like transformers. These models involve handling multiple layers of perceptrons, working with larger datasets, and applying normalization to effectively process complex data like images, text, and sequences.
 
-## 4.Further Topics
+## 4. Conclusion
+
+A perceptron is basicly a function that takes in input(s) (wheter it is from an input or a previous layer), which then calculates a weighted sum that decides if it will continue to feed the information forward into the next layer
+
+## 5. Further Topics
 
 - Activation Functions
 - Normalization Techniques
