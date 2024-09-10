@@ -1,3 +1,6 @@
+from model.mlp import MLP
+from typing import Tuple
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -6,13 +9,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report
 
-
-from tensorflow.keras.layers import Input, Dense, Dropout, BatchNormalization
-from tensorflow.keras.regularizers import l2
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import BinaryCrossentropy
-from tensorflow.keras.metrics import BinaryAccuracy, FalseNegatives, FalsePositives
-from tensorflow.keras import Sequential
+from tensorflow.keras.metrics import FalseNegatives, FalsePositives, BinaryAccuracy
 
 def parse_data():
     data = pd.read_csv("./data/Bank Customer Churn Prediction.csv")
@@ -49,58 +48,6 @@ def train_test_val_split(
 
     return x_train, x_val, x_test, y_train, y_val, y_test
 
-
-def create_model(
-    input_shape,
-):
-    model = Sequential(
-        [
-            Input(shape=input_shape),
-            Dense(
-                256,
-                activation="relu",
-                kernel_regularizer=l2(0.01),
-            ),
-            BatchNormalization(),
-            Dropout(0.3),
-            Dense(
-                128,
-                activation="relu",
-                kernel_regularizer=l2(0.01),
-            ),
-            BatchNormalization(),
-            Dropout(0.3),
-            Dense(
-                64,
-                activation="relu",
-                kernel_regularizer=l2(0.01),
-            ),
-            BatchNormalization(),
-            Dropout(0.3),
-            Dense(
-                32,
-                activation="relu",
-                kernel_regularizer=l2(0.01),
-            ),
-            BatchNormalization(),
-            Dropout(0.3),
-            Dense(
-                1,
-                activation="sigmoid",
-                kernel_regularizer=l2(0.01),
-            ),
-        ]
-    )
-
-    model.compile(
-        optimizer=Adam(learning_rate=1e-3),
-        loss=BinaryCrossentropy(),
-        metrics=[BinaryAccuracy(), FalseNegatives(), FalsePositives()],
-    )
-
-    return model
-
-
 def evaluate_model(y_true, y_pred):
     print("\nClassification Report:")
     print(classification_report(y_true, y_pred, target_names=["Negative", "Positive"]))
@@ -129,7 +76,9 @@ def plot(history):
     plt.show()
 
 
+
 def main():
+    
     features, label = parse_data()
     features = normalize_feature_data(
         features=features,
@@ -140,28 +89,29 @@ def main():
         data=(features, label),
     )
 
-    multi_layer_perceptron = create_model(
-        input_shape=(x_train.shape[1],),
-    )
+    mlp = MLP(output_units=1)
 
-    history = multi_layer_perceptron.fit(
+    mlp.compile(
+        optimizer=Adam(learning_rate=1e-3),
+        loss=BinaryCrossentropy(),
+        metrics=[
+            BinaryAccuracy(),
+            FalseNegatives(),
+            FalsePositives()
+        ],
+    )
+    
+
+    history = mlp.fit(
         x_train, y_train, epochs=100, validation_data=(x_val, y_val)
     )
 
-    predictions = multi_layer_perceptron.predict(x_test)
+    predictions = mlp.predict(x_test)
     predictions_labels = [1 if p >= 0.5 else 0 for p in predictions]
 
     evaluate_model(y_test, predictions_labels)
 
     plot(history)
-
-    loss, accuracy, false_negatives, false_positives = multi_layer_perceptron.evaluate(
-        x_test, y_test
-    )
-    print(f"Accuracy on testing: {accuracy}")
-    print(f"Loss on testing: {loss}")
-    print(f"False Negatives: {false_negatives}")
-    print(f"False Positives: {false_positives}")
 
 
 if __name__ == "__main__":

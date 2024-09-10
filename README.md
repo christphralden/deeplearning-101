@@ -6,8 +6,8 @@ Creating a neural network purely with numpy. So every the implementation of ever
 
 ### Sessions
 
-**Code** : Contains code for each session
-**Notes** : Contains notes as the prerequisite to understanding the implementation of the code
+- **Code** : Contains code for each session
+- **Notes** : Contains notes as the prerequisite to understanding the implementation of the code
 
 ### Architectures
 
