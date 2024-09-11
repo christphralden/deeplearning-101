@@ -1,4 +1,5 @@
-import numpy as np
+import tensorflow as tf
+
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -6,13 +7,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report
 
-
-from tensorflow.keras.layers import Input, Dense, Dropout, BatchNormalization
-from tensorflow.keras.regularizers import l2
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.losses import BinaryCrossentropy
-from tensorflow.keras.metrics import BinaryAccuracy, FalseNegatives, FalsePositives
-from tensorflow.keras import Sequential
 
 def parse_data():
     data = pd.read_csv("./data/Bank Customer Churn Prediction.csv")
@@ -53,49 +47,52 @@ def train_test_val_split(
 def create_model(
     input_shape,
 ):
-    model = Sequential(
+    model = tf.keras.Sequential(
         [
-            Input(shape=input_shape),
-            Dense(
+            tf.keras.layers.Input(shape=input_shape),
+            tf.keras.layers.Dense(
                 256,
                 activation="relu",
-                kernel_regularizer=l2(0.01),
+                kernel_regularizer=tf.keras.regularizers.l2(0.01),
             ),
-            BatchNormalization(),
-            Dropout(0.3),
-            Dense(
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Dropout(0.3),
+            tf.keras.layers.Dense(
                 128,
                 activation="relu",
-                kernel_regularizer=l2(0.01),
+                kernel_regularizer=tf.keras.regularizers.l2(0.01),
             ),
-            BatchNormalization(),
-            Dropout(0.3),
-            Dense(
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Dropout(0.3),
+            tf.keras.layers.Dense(
                 64,
                 activation="relu",
-                kernel_regularizer=l2(0.01),
+                kernel_regularizer=tf.keras.regularizers.l2(0.01),
             ),
-            BatchNormalization(),
-            Dropout(0.3),
-            Dense(
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Dropout(0.3),
+            tf.keras.layers.Dense(
                 32,
                 activation="relu",
-                kernel_regularizer=l2(0.01),
+                kernel_regularizer=tf.keras.regularizers.l2(0.01),
             ),
-            BatchNormalization(),
-            Dropout(0.3),
-            Dense(
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Dropout(0.3),
+            tf.keras.layers.Dense(
                 1,
                 activation="sigmoid",
-                kernel_regularizer=l2(0.01),
+                kernel_regularizer=tf.keras.regularizers.l2(0.01),
             ),
         ]
     )
 
     model.compile(
-        optimizer=Adam(learning_rate=1e-3),
-        loss=BinaryCrossentropy(),
-        metrics=[BinaryAccuracy(), FalseNegatives(), FalsePositives()],
+        optimizer=tf.keras.optimizers.Adam(learning_rate=1e-3),
+        loss=tf.keras.losses.BinaryCrossentropy(),
+        metrics=[
+            tf.keras.metrics.BinaryAccuracy(), 
+            tf.keras.metrics.FalseNegatives(), 
+            tf.keras.metrics.FalsePositives()],
     )
 
     return model
@@ -141,7 +138,7 @@ def main():
     )
 
     multi_layer_perceptron = create_model(
-        input_shape=(x_train.shape[1],),
+        input_shape=(x_train.shape[1:]),
     )
 
     history = multi_layer_perceptron.fit(
