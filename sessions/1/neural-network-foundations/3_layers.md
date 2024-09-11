@@ -61,7 +61,7 @@ For simplicity, we will use a smaller network.
 
 **Lets visualize**
 
-<p align="center">
+<p align="center" style="background-color:white;">
   <img src="./_attachments/neural_network_representation.png" alt="neural_network_representation" />
 </p>
 
