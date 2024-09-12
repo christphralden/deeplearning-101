@@ -1,7 +1,7 @@
-from model.mlp import MLP
-from typing import Tuple
+import tensorflow as tf
 
-import numpy as np
+from model.mlp import MLP
+
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -9,9 +9,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report
 
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.losses import BinaryCrossentropy
-from tensorflow.keras.metrics import FalseNegatives, FalsePositives, BinaryAccuracy
 
 def parse_data():
     data = pd.read_csv("./data/Bank Customer Churn Prediction.csv")
@@ -92,12 +89,12 @@ def main():
     mlp = MLP(output_units=1)
 
     mlp.compile(
-        optimizer=Adam(learning_rate=1e-3),
-        loss=BinaryCrossentropy(),
+        optimizer=tf.keras.optimizers.Adam(learning_rate=1e-3),
+        loss=tf.keras.losses.BinaryCrossentropy(),
         metrics=[
-            BinaryAccuracy(),
-            FalseNegatives(),
-            FalsePositives()
+            tf.keras.metrics.BinaryAccuracy(),
+            tf.keras.metrics.FalseNegatives(),
+            tf.keras.metrics.FalsePositives()
         ],
     )
     
